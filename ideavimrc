@@ -1,0 +1,82 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" -- LINE NUMBERS
+set relativenumber
+
+"" -- CURSOR --
+set scrolloff=5 
+
+" -- SEARCH
+"Do incremental searching.
+set incsearch
+"Ignore case sensitive search by default
+set ignorecase 
+"When searching with capitals, search case sensitive
+set smartcase 
+"Highlight search matches
+set hlsearch 
+nnoremap <ESC> :nohl<return><esc> 
+
+" -- CLIPBOARD
+"Use system clipboard rather than vim 
+set clipboard=unnamedplus 
+" - Set delete and change to save to register c rather than the system clipboard
+nnoremap d "cd
+vnoremap d "cd
+nnoremap c "cc
+vnoremap c "cc
+
+" -- KEYBINDS
+" COMMENTS --> In IdeaVim settings, set comment keyboard shortcut to be handled by IDE
+
+let mapleader = " "
+
+map <C-/> <Action>(CommentByLineComment)
+
+" Window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader>wh <Action>(SplitHorizontally)
+
+" Move between split panes
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+
+" File Search
+"Fuzzy finder
+map <leader>f <Action>(GotoFile)
+"Recent Files
+map <leader><leader> <Action>(RecentLocations)
+"Grep
+map <leader>s <Action>(FindInPath)
+
+" Quick Documentation - don't know why its called this but it works
+map K <Action>(QuickJavaDoc)
+
+"Easy Save
+nnoremap <C-s> :update<Enter>
+inoremap <C-s> <ESC>:update<Enter>
+
+"STANDARD IDEAVIM STUFF
+" Don't use Ex mode, use Q for formatting.
+"map Q gq
+
+" --- PLUGINS
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+
+" Commentary plugin
+"Plug 'tpope/vim-commentary'
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
